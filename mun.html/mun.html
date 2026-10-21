@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promosi Media Sosial</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background:
+                radial-gradient(ellipse at 80% 15%, rgba(211, 60, 33, 0.2), transparent 35%),
+                linear-gradient(135deg, #10151a, #252d34 55%, #0c1014);
+            color: #f4f5f6;
+            min-height: 100vh;
+            min-height: 100svh;
+            margin: 0;
+            overflow-x: hidden;
+            position: relative;
+            isolation: isolate;
+        }
+
+        .garage-scene {
+            position: fixed;
+            z-index: -1;
+            inset: 0;
+            overflow: hidden;
+            perspective: 1100px;
+            pointer-events: none;
+            background:
+                linear-gradient(180deg, transparent 0 58%, rgba(5, 8, 11, 0.75) 100%),
+                repeating-linear-gradient(90deg, transparent 0 11%, rgba(255, 255, 255, 0.025) 11.1% 11.25%, transparent 11.35% 22%);
+        }
+
+        .garage-scene::before {
+            content: "";
+            position: absolute;
+            inset: 0 0 38%;
+            background:
+                linear-gradient(90deg, transparent 0 17%, rgba(236, 63, 30, 0.11) 17.2% 17.5%, transparent 17.7% 82%, rgba(236, 63, 30, 0.1) 82.2% 82.5%, transparent 82.7%),
+                repeating-linear-gradient(0deg, transparent 0 78px, rgba(255, 255, 255, 0.035) 79px 80px, transparent 81px 160px);
+            opacity: 0.75;
+        }
+
+        .garage-scene::after {
+            content: "";
+            position: absolute;
+            z-index: 0;
+            left: 28%;
+            right: -10%;
+            bottom: -25%;
+            height: 67%;
+            transform: rotateX(66deg);
+            transform-origin: center top;
+            background:
+                radial-gradient(ellipse at 58% 20%, rgba(255, 71, 36, 0.22), transparent 38%),
+                repeating-linear-gradient(90deg, transparent 0 95px, rgba(255, 255, 255, 0.07) 96px 98px, transparent 99px 190px),
+                repeating-linear-gradient(0deg, transparent 0 65px, rgba(255, 255, 255, 0.065) 66px 68px, transparent 69px 130px),
+                linear-gradient(#252c32, #101419 55%);
+            box-shadow: 0 -20px 50px rgba(0, 0, 0, 0.55);
+        }
+
+        .motorcycle {
+            position: absolute;
+            z-index: 1;
+            right: 0;
+            bottom: -10%;
+            width: min(82vw, 1050px);
+            max-height: 88vh;
+            filter: drop-shadow(0 38px 28px rgba(0, 0, 0, 0.66));
+            transform: rotateY(-10deg) rotateX(2deg);
+            opacity: 0.42;
+            animation: bike-arrive 1.2s ease-out both;
+        }
+
+        @keyframes bike-arrive {
+            from { transform: translateX(55px) rotateY(-15deg) rotateX(2deg); }
+            to { transform: translateX(0) rotateY(-10deg) rotateX(2deg); }
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            width: min(100%, 1060px);
+            margin: 0 auto;
+            padding: 64px 24px;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .eyebrow {
+            margin: 0 0 10px;
+            color: #ff9773;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            line-height: 1.1;
+            background: linear-gradient(45deg, #ff7655, #ffc071);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .intro {
+            max-width: 620px;
+            margin: 14px 0 32px;
+            color: #c2c9ce;
+            line-height: 1.7;
+        }
+
+        .social-icons {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+            margin: 0;
+        }
+
+        .social-icons a {
+            min-height: 206px;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 17px;
+            padding: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: 22px;
+            background: linear-gradient(145deg, rgba(25, 31, 36, 0.94), rgba(12, 16, 20, 0.9));
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.3);
+            transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+        }
+
+        .social-logo {
+            position: relative;
+            display: grid;
+            width: 76px;
+            height: 76px;
+            flex: 0 0 76px;
+            place-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 23px;
+            isolation: isolate;
+            box-shadow:
+                0 8px 0 var(--logo-edge),
+                0 15px 23px rgba(0, 0, 0, 0.46),
+                inset 0 2px 3px rgba(255, 255, 255, 0.55),
+                inset 0 -5px 9px rgba(0, 0, 0, 0.28);
+            transform: perspective(220px) rotateX(8deg) rotateY(-9deg);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .social-logo::before {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            inset: 5px;
+            border: 1px solid rgba(255, 255, 255, 0.17);
+            border-radius: 17px;
+            box-shadow: inset 0 1px 4px rgba(255, 255, 255, 0.1);
+        }
+
+        .social-logo::after {
+            content: "";
+            position: absolute;
+            z-index: 2;
+            inset: 1px;
+            border-radius: inherit;
+            background: linear-gradient(140deg, rgba(255, 255, 255, 0.25), transparent 37%, transparent 68%, rgba(255, 255, 255, 0.04));
+            pointer-events: none;
+        }
+
+        .social-logo svg {
+            position: relative;
+            z-index: 1;
+            width: 44px;
+            height: 44px;
+            overflow: visible;
+            filter:
+                drop-shadow(0 3px 0 rgba(0, 0, 0, 0.42))
+                drop-shadow(0 5px 5px rgba(0, 0, 0, 0.35));
+        }
+
+        .social-logo--tiktok {
+            --logo-edge: #111820;
+            background: linear-gradient(145deg, #44505a 0%, #252d34 42%, #11171c 100%);
+        }
+
+        .social-logo--youtube {
+            --logo-edge: #aa201a;
+            background: linear-gradient(145deg, #ff7468 0%, #ed4035 46%, #b51e1a 100%);
+        }
+
+        .social-logo--facebook {
+            --logo-edge: #143b78;
+            background: linear-gradient(145deg, #77b2ff 0%, #347de0 46%, #17488f 100%);
+        }
+
+        .social-icons a:hover {
+            transform: translateY(-6px);
+            border-color: rgba(255, 129, 91, 0.7);
+            background: rgba(23, 28, 32, 0.94);
+        }
+
+        .social-icons a:hover .social-logo {
+            transform: perspective(220px) translateY(-4px) rotateX(0) rotateY(0) scale(1.06);
+            box-shadow:
+                0 4px 0 var(--logo-edge),
+                0 19px 27px rgba(0, 0, 0, 0.5),
+                inset 0 2px 3px rgba(255, 255, 255, 0.68),
+                inset 0 -5px 9px rgba(0, 0, 0, 0.25);
+        }
+
+        .social-title {
+            color: #f4f5f6;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .social-caption {
+            color: #adb6bc;
+            font-size: 0.9rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            margin-top: 28px;
+            padding: 12px 18px;
+            background: linear-gradient(45deg, #e8442c, #ff9b50);
+            color: white;
+            font-size: 0.9rem;
+            font-weight: 700;
+            border-radius: 999px;
+            box-shadow: 0 8px 22px rgba(239, 75, 43, 0.35);
+            transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .cta-button:hover {
+            background: linear-gradient(45deg, #ff4b2b, #ff7b43);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(255, 80, 44, 0.45);
+        }
+
+        .cta-button:focus-visible {
+            outline: 3px solid #fff;
+            outline-offset: 4px;
+        }
+
+        .social-icons a:focus-visible {
+            outline: 3px solid #fff;
+            outline-offset: 4px;
+        }
+
+        @media (max-width: 760px) {
+            .container {
+                padding: 42px 18px;
+            }
+
+            .social-icons {
+                gap: 16px;
+            }
+
+            .motorcycle {
+                width: 115vw;
+                right: -24%;
+                bottom: -1%;
+                opacity: 0.3;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .social-icons {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .social-icons a {
+                min-height: auto;
+                flex-direction: row;
+                justify-content: flex-start;
+                padding: 16px;
+            }
+
+            .social-copy {
+                display: grid;
+                gap: 4px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="garage-scene" aria-hidden="true">
+        <svg class="motorcycle" viewBox="0 0 1100 650" role="img" aria-label="Ilustrasi motor Tiger Revo modifikasi bergaya streetfighter">
+            <defs>
+                <linearGradient id="tank" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#ff7650"/>
+                    <stop offset=".42" stop-color="#db321e"/>
+                    <stop offset="1" stop-color="#73170f"/>
+                </linearGradient>
+                <linearGradient id="metal" x1="0" y1="0" x2="0" y2="1">
+                    <stop stop-color="#eef2f3"/>
+                    <stop offset=".35" stop-color="#8d969b"/>
+                    <stop offset=".68" stop-color="#30373c"/>
+                    <stop offset="1" stop-color="#c2c8ca"/>
+                </linearGradient>
+                <linearGradient id="rubber" x1="0" y1="0" x2="1" y2="1">
+                    <stop stop-color="#32383b"/>
+                    <stop offset=".5" stop-color="#080a0b"/>
+                    <stop offset="1" stop-color="#252a2d"/>
+                </linearGradient>
+                <radialGradient id="lamp">
+                    <stop stop-color="#fffbd4"/>
+                    <stop offset=".38" stop-color="#ffc85d"/>
+                    <stop offset="1" stop-color="#f14824" stop-opacity=".08"/>
+                </radialGradient>
+                <filter id="glow">
+                    <feGaussianBlur stdDeviation="11"/>
+                </filter>
+            </defs>
+            <ellipse cx="568" cy="548" rx="450" ry="35" fill="#050708" opacity=".72"/>
+            <ellipse cx="563" cy="541" rx="370" ry="10" fill="#f25732" opacity=".24" filter="url(#glow)"/>
+
+            <g stroke="#111518" stroke-width="17" fill="none">
+                <circle cx="285" cy="440" r="133"/>
+                <circle cx="825" cy="440" r="133"/>
+            </g>
+            <g fill="none" stroke="#8c969b" opacity=".78">
+                <circle cx="285" cy="440" r="112" stroke-width="4"/>
+                <circle cx="825" cy="440" r="112" stroke-width="4"/>
+                <circle cx="285" cy="440" r="21" stroke-width="9"/>
+                <circle cx="825" cy="440" r="21" stroke-width="9"/>
+                <g stroke-width="3">
+                    <path d="M285 328v224M173 440h224M206 361l158 158M206 519l158-158"/>
+                    <path d="M825 328v224M713 440h224M746 361l158 158M746 519l158-158"/>
+                </g>
+            </g>
+            <g fill="#181d20" stroke="#737c80" stroke-width="3">
+                <circle cx="285" cy="440" r="38"/>
+                <circle cx="825" cy="440" r="38"/>
+                <path d="M239 405a61 61 0 0 1 91-22l-13 12a45 45 0 0 0-65 24z" fill="#e2432a" stroke="none"/>
+                <path d="M779 405a61 61 0 0 1 91-22l-13 12a45 45 0 0 0-65 24z" fill="#e2432a" stroke="none"/>
+            </g>
+
+            <g stroke="url(#metal)" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M483 343 285 440M483 343l137 22 205 75M620 365 490 458 285 440" fill="none" stroke-width="18"/>
+                <path d="m482 347 37 105 100-85" fill="none" stroke="#b7c0c3" stroke-width="11"/>
+                <path d="m737 262 88 178M761 255l86 182" fill="none" stroke-width="15"/>
+                <path d="m713 272 82-17 36 18" fill="none" stroke-width="9"/>
+                <path d="m745 257 18-49 29 2 18 51" fill="#1a2024" stroke-width="7"/>
+                <path d="m778 209 3-35 41-7" fill="none" stroke-width="7"/>
+                <path d="m796 174 20-18 28 3-19 21z" fill="#b8c1c5" stroke-width="5"/>
+                <path d="m716 262-33-53-22-7" fill="none" stroke-width="7"/>
+                <path d="m669 202-19-17-28 2 17 20z" fill="#aab2b6" stroke-width="5"/>
+            </g>
+
+            <path d="M407 299q27-57 103-62l111 15q29 8 48 43l-34 68-148 10-95-28z" fill="url(#tank)" stroke="#2d1715" stroke-width="9"/>
+            <path d="M427 296q52-36 119-35l63 9q-66-3-119 28l-24 43-55-10z" fill="#ff9a70" opacity=".7"/>
+            <path d="m459 273 122 2-14 14-97 4z" fill="#151a1e"/>
+            <path d="M466 359 626 362l64 40-187 18-78-34z" fill="#20262a" stroke="#090c0e" stroke-width="10"/>
+            <path d="m451 367-94 20-28 35 67 8 94-29z" fill="#e2462b" stroke="#401b16" stroke-width="7"/>
+            <path d="m468 383 154-18 79 75-102 36-158-24z" fill="#282e32" stroke="#0e1214" stroke-width="9"/>
+            <path d="m496 402 74-8 46 56-55 21-82-32z" fill="#d63b26" stroke="#8b291b" stroke-width="5"/>
+            <path d="m501 408 58-7 27 10-64 10z" fill="#ff9b72" opacity=".7"/>
+            <path d="m634 356 70-43 44 4-38 55z" fill="#171c20" stroke="#090b0d" stroke-width="7"/>
+            <path d="m633 359 25-27 34-4-22 28z" fill="#f5f4ec"/>
+            <path d="m649 360 21-20 17-2-15 23z" fill="#ff5b2e"/>
+
+            <g>
+                <path d="M484 419q-42 25-24 76l29 17 127-2q31-10 20-57l-42-42z" fill="#353d41" stroke="#101416" stroke-width="9"/>
+                <path d="m490 443 92-5 20 42-108 3z" fill="#151a1d" stroke="#818a8e" stroke-width="6"/>
+                <path d="m504 451 73-3 9 19-79 3z" fill="#aeb7ba" opacity=".65"/>
+                <circle cx="540" cy="476" r="29" fill="#15191b" stroke="#9aa3a7" stroke-width="6"/>
+                <circle cx="540" cy="476" r="12" fill="#c6ccce"/>
+                <path d="M488 490h138l-20 25H506z" fill="#d63a24"/>
+                <path d="m495 511 85 2 42 31h-93l-51-17z" fill="#14191c" stroke="#7c8589" stroke-width="6"/>
+                <path d="m610 480 80 7 108-30" fill="none" stroke="#dbdfe0" stroke-width="13"/>
+                <path d="m620 494 100 11 93-27" fill="none" stroke="#737d82" stroke-width="8"/>
+                <path d="m784 459 72 13-4 29-73-15z" fill="#b5bdc0" stroke="#272d30" stroke-width="8"/>
+                <path d="m798 466 60 12-1 11-64-13z" fill="#f3a35e"/>
+            </g>
+            <path d="m327 405 27 4-12 31-32 4z" fill="#dadfe1" stroke="#444c50" stroke-width="6"/>
+            <path d="m299 407 25 5-9 17-28 1z" fill="#ed4930"/>
+            <path d="m742 255 28-7 44 10 23 30-38-6-33 8z" fill="#151a1d" stroke="#07090a" stroke-width="6"/>
+            <path d="m760 253 42 5 14 11-48-4z" fill="#dce4e4"/>
+            <path d="m775 263 36 2 10 7-42-3z" fill="url(#lamp)"/>
+
+            <g fill="none" stroke="#dce1e2" stroke-linecap="round">
+                <path d="m715 451 101-28" stroke-width="8"/>
+                <path d="m300 440 34-4" stroke-width="7"/>
+                <path d="m416 415 57 2" stroke="#fb5a35" stroke-width="5"/>
+            </g>
+            <path d="m700 470 85-23" fill="none" stroke="#ff5633" stroke-width="4" opacity=".9"/>
+        </svg>
+    </div>
+    <div class="container">
+        <p class="eyebrow">Motor • Cerita • Komunitas</p>
+        <h1>Terhubung dengan Kami</h1>
+        <p class="intro">Ikuti perjalanan dan keseruan kami di sosial media. Pilih platform favoritmu untuk melihat konten terbaru.</p>
+
+        <div class="social-icons">
+            <a href="https://www.tiktok.com/@munmun0857" target="_blank" rel="noopener noreferrer" title="TikTok">
+                <span class="social-logo social-logo--tiktok" aria-hidden="true">
+                    <svg viewBox="0 0 48 48" fill="none">
+                        <path d="M27 5h6c.4 5.2 3.5 8.5 9 9.4v6.5a20 20 0 0 1-9-3v12.4a13 13 0 1 1-13-13c.9 0 1.8.1 2.7.3v6.9a6.7 6.7 0 1 0 3.8 6V5Z" fill="#25F4EE" transform="translate(-2 2)"/>
+                        <path d="M27 5h6c.4 5.2 3.5 8.5 9 9.4v6.5a20 20 0 0 1-9-3v12.4a13 13 0 1 1-13-13c.9 0 1.8.1 2.7.3v6.9a6.7 6.7 0 1 0 3.8 6V5Z" fill="#FE2C55" transform="translate(2 -1)"/>
+                        <path d="M27 5h6c.4 5.2 3.5 8.5 9 9.4v6.5a20 20 0 0 1-9-3v12.4a13 13 0 1 1-13-13c.9 0 1.8.1 2.7.3v6.9a6.7 6.7 0 1 0 3.8 6V5Z" fill="#fff"/>
+                    </svg>
+                </span>
+                <span class="social-copy">
+                    <span class="social-title">TikTok</span>
+                    <span class="social-caption">Video dan momen singkat</span>
+                </span>
+            </a>
+            <a href="https://www.youtube.com/@Mun_Mun1" target="_blank" rel="noopener noreferrer" title="YouTube">
+                <span class="social-logo social-logo--youtube" aria-hidden="true">
+                    <svg viewBox="0 0 48 48" fill="none">
+                        <path d="M42 15.1a6 6 0 0 0-4.2-4.2C34.1 10 24 10 24 10s-10.1 0-13.8.9A6 6 0 0 0 6 15.1C5 18.8 5 24 5 24s0 5.2 1 8.9a6 6 0 0 0 4.2 4.2C13.9 38 24 38 24 38s10.1 0 13.8-.9a6 6 0 0 0 4.2-4.2c1-3.7 1-8.9 1-8.9s0-5.2-1-8.9Z" fill="#fff" transform="translate(0 2)"/>
+                        <path d="M42 15.1a6 6 0 0 0-4.2-4.2C34.1 10 24 10 24 10s-10.1 0-13.8.9A6 6 0 0 0 6 15.1C5 18.8 5 24 5 24s0 5.2 1 8.9a6 6 0 0 0 4.2 4.2C13.9 38 24 38 24 38s10.1 0 13.8-.9a6 6 0 0 0 4.2-4.2c1-3.7 1-8.9 1-8.9s0-5.2-1-8.9Z" fill="#fff"/>
+                        <path d="m20 32 13-8-13-8v16Z" fill="#E52D27"/>
+                    </svg>
+                </span>
+                <span class="social-copy">
+                    <span class="social-title">YouTube</span>
+                    <span class="social-caption">Video dan cerita terbaru</span>
+                </span>
+            </a>
+            <a href="https://www.facebook.com/gak.nduwejeneng.56027" target="_blank" rel="noopener noreferrer" title="Facebook">
+                <span class="social-logo social-logo--facebook" aria-hidden="true">
+                    <svg viewBox="0 0 48 48" fill="none">
+                        <path d="M27.4 42V26.2h5.4l.8-6.2h-6.2v-4c0-1.8.5-3 3.1-3h3.3V7.5c-.6-.1-2.7-.3-5.1-.3-5 0-8.4 3.1-8.4 8.7V20h-5.6v6.2h5.6V42h7.1Z" fill="#fff" transform="translate(1 1)"/>
+                        <path d="M27.4 42V26.2h5.4l.8-6.2h-6.2v-4c0-1.8.5-3 3.1-3h3.3V7.5c-.6-.1-2.7-.3-5.1-.3-5 0-8.4 3.1-8.4 8.7V20h-5.6v6.2h5.6V42h7.1Z" fill="#fff"/>
+                    </svg>
+                </span>
+                <span class="social-copy">
+                    <span class="social-title">Facebook</span>
+                    <span class="social-caption">Album dan kabar terbaru</span>
+                </span>
+            </a>
+        </div>
+
+        <a class="cta-button" href="galeri.html" target="_blank" rel="noopener noreferrer">
+            Lihat Galeri Foto <span aria-hidden="true">&rarr;</span>
+        </a>
+    </div>
+</body>
+</html>

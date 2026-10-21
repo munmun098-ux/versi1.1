@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#11171c">
+    <title>Galeri Sosial Media</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            margin: 0;
+            padding: 64px 24px;
+            color: #f4f5f6;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background:
+                radial-gradient(ellipse at 80% 15%, rgba(211, 60, 33, 0.2), transparent 35%),
+                linear-gradient(135deg, #10151a, #252d34 55%, #0c1014);
+        }
+
+        main {
+            width: min(100%, 1060px);
+            margin: 0 auto;
+        }
+
+        .eyebrow {
+            margin: 0 0 10px;
+            color: #ff9773;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            line-height: 1.1;
+        }
+
+        .intro {
+            max-width: 620px;
+            margin: 14px 0 32px;
+            color: #c2c9ce;
+            line-height: 1.7;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .photo-card {
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: 20px;
+            background: rgba(15, 19, 23, 0.82);
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.3);
+            transition: transform 0.25s ease, border-color 0.25s ease;
+        }
+
+        .photo-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(255, 129, 91, 0.7);
+        }
+
+        .photo-card img {
+            display: block;
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+            background: #293139;
+        }
+
+        .photo-info {
+            padding: 18px;
+        }
+
+        .photo-info h2 {
+            margin: 0 0 6px;
+            font-size: 1.1rem;
+        }
+
+        .photo-info p {
+            margin: 0 0 16px;
+            color: #adb6bc;
+            font-size: 0.9rem;
+        }
+
+        .social-link {
+            display: inline-block;
+            padding: 9px 14px;
+            border-radius: 999px;
+            color: #fff;
+            background: linear-gradient(45deg, #e8442c, #ff9b50);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .social-link:focus-visible,
+        .back-link:focus-visible {
+            outline: 3px solid #fff;
+            outline-offset: 4px;
+        }
+
+        .note {
+            margin: 24px 0 0;
+            color: #aeb7bc;
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 26px;
+            color: #ffad8f;
+            text-decoration: none;
+        }
+
+        @media (max-width: 760px) {
+            body {
+                padding: 42px 18px;
+            }
+
+            .gallery {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 16px;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <p class="eyebrow">Galeri Sosial Media</p>
+        <h1>Foto & Cerita Kami</h1>
+        <p class="intro">
+            Lihat keseruan kami di sosial media. Foto-foto perjalanan kami tampil di
+            setiap bagian galeri.
+        </p>
+
+        <section class="gallery" aria-label="Thumbnail sosial media">
+            <article class="photo-card">
+                <img
+                    src="foto-tiktok.jpeg"
+                    alt="Seseorang menikmati pemandangan pegunungan berkabut"
+                    loading="lazy"
+                >
+                <div class="photo-info">
+                    <h2>Momen di TikTok</h2>
+                    <p>Menikmati suasana dan pemandangan pegunungan.</p>
+                    <a class="social-link" href="https://www.tiktok.com/@munmun0857" target="_blank" rel="noopener noreferrer">
+                        Lihat TikTok
+                    </a>
+                </div>
+            </article>
+
+            <article class="photo-card">
+                <img
+                    src="foto-youtube.jpeg"
+                    alt="Rombongan pengendara motor di depan penanda Taman Nasional Bromo Tengger Semeru"
+                    loading="lazy"
+                >
+                <div class="photo-info">
+                    <h2>Video di YouTube</h2>
+                    <p>Temukan video dan cerita terbaru di channel kami.</p>
+                    <a class="social-link" href="https://www.youtube.com/@Mun_Mun1" target="_blank" rel="noopener noreferrer">
+                        Lihat YouTube
+                    </a>
+                </div>
+            </article>
+
+            <article class="photo-card">
+                <img
+                    src="foto-facebook.jpeg"
+                    alt="Pengendara berdiri di samping motor merah di depan penanda Bromo"
+                    loading="lazy"
+                >
+                <div class="photo-info">
+                    <h2>Album di Facebook</h2>
+                    <p>Momen perjalanan motor di kawasan Bromo.</p>
+                    <a class="social-link" href="https://www.facebook.com/gak.nduwejeneng.56027" target="_blank" rel="noopener noreferrer">
+                        Lihat Facebook
+                    </a>
+                </div>
+            </article>
+        </section>
+
+        <p class="note">
+            Galeri menampilkan foto perjalanan pilihan kami.
+        </p>
+        <a class="back-link" href="mun.html">&larr; Kembali ke halaman utama</a>
+    </main>
+</body>
+</html>
